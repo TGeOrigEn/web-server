@@ -6,7 +6,7 @@ const router = new Router();
 
 router.post('/career', career.create);
 
-router.get('/career/:id', career.get);
+router.get('/career/:id', career.getAll);
 
 router.put('/career', career.update);
 

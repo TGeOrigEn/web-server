@@ -6,7 +6,7 @@ const router = new Router();
 
 router.post('/activity', activity.create);
 
-router.get('/activity/:id', activity.get);
+router.get('/activity/:id', activity.getAll);
 
 router.put('/activity', activity.update);
 

@@ -16,9 +16,9 @@ class Rank {
         res.json(rank.rows[0]);
     }
 
-    async get(req, res) {
+    async getAll(req, res) {
         const ID = req.params.id;
-        const rank = await database.query('SELECT * FROM Rank WHERE ID = $1', [ID]);
+        const rank = await database.query('SELECT * FROM Rank WHERE PersonID = $1', [ID]);
         res.json(rank.rows[0]);
     }
 
@@ -32,7 +32,7 @@ class Rank {
             Name,
         } = req.body;
 
-        const rank = await database.query('UPDATE Rank SET PersonID = $1, StartDate = $2, EndDate = $3, Degree = $4, Name = $5 WHERE ID = $6 RETURNING *'
+        const rank = await database.query('UPDATE Rank SET PersonID = $1, StartDate = $2, EndDate = $3, Degree = $4, Name = $5 WHERE PersonID = $6 RETURNING *'
             , [PersonID, StartDate, EndDate, Degree, Name, ID]);
 
         res.json(rank.rows[0]);
