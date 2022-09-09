@@ -21,7 +21,7 @@ class Person {
 
         const person = await database.query('INSERT INTO Person'
             + ' (Surname, Name, Patronymic, DateBirth, Religion, Origin, LevelEducation, EducationalInstitution, LocationEducationalInstitution, Property, Awards, Salary, MaritalStatus, Other) '
-            + 'values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *;'
+            + 'values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *'
             , [
                 Surname,
                 Name,
@@ -43,7 +43,7 @@ class Person {
     }
 
     async getAll(_req, res) {
-        const persons = await database.query('SELECT * FROM Person;');
+        const persons = await database.query('SELECT * FROM Person');
         res.json(persons.rows);
     }
 

@@ -38,7 +38,7 @@ class Activity {
 
     async delete(req, res) {
         const ID = req.params.id;
-        const activity = await database.query('DELETE FROM Activity WHERE ID = $1;', [ID]);
+        const activity = await database.query('DELETE FROM Activity WHERE ID = $1', [ID]);
         res.json(activity.rows[0]);
     }
 }
