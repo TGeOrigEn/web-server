@@ -32,7 +32,7 @@ class Rank {
         } = req.body;
 
         const rank = await database.query('UPDATE rank SET person_id = $1, start_date = $2, end_date = $3, degree = $4, name = $5 WHERE id = $6 RETURNING *'
-            , [person_id, start_date, end_date, degree, name, ID]);
+            , [person_id, start_date, end_date, degree, name, id]);
 
         res.json(rank.rows[0]);
     }
