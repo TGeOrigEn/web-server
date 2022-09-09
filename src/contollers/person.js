@@ -11,7 +11,7 @@ class Person {
             origin,
             level_education,
             educational_institution,
-            Location_educational_institution,
+            location_educational_institution,
             property,
             awards,
             salary,
@@ -31,7 +31,7 @@ class Person {
                 origin,
                 level_education,
                 educational_institution,
-                Location_educational_institution,
+                location_educational_institution,
                 property,
                 awards,
                 salary,
@@ -64,7 +64,7 @@ class Person {
             origin,
             level_education,
             educational_institution,
-            Location_educational_institution,
+            location_educational_institution,
             property,
             awards,
             salary,
@@ -72,7 +72,7 @@ class Person {
             other
         } = req.body;
 
-        const person = await database.query('UPDATE person SET surname = $1, name = $2, patronymic = $3, date_birth = $4, religion = $5, origin = $6, level_education = $7, educational_institution = $8, Location_educational_institution = $9, property = $10, awards = $11, salary = $12, marital_status = $13, other = $14 WHERE id = $15 RETURNING *'
+        const person = await database.query('UPDATE person SET surname = $1, name = $2, patronymic = $3, date_birth = $4, religion = $5, origin = $6, level_education = $7, educational_institution = $8, location_educational_institution = $9, property = $10, awards = $11, salary = $12, marital_status = $13, other = $14 WHERE id = $15 RETURNING *'
             , [
                 surname,
                 name,
@@ -82,7 +82,7 @@ class Person {
                 origin,
                 level_education,
                 educational_institution,
-                Location_educational_institution,
+                location_educational_institution,
                 property,
                 awards,
                 salary,
