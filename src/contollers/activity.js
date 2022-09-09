@@ -16,7 +16,7 @@ class Activity {
     }
 
     async get(req, res) {
-        const ID = req.params.ID;
+        const ID = req.params.id;
         const activity = await database.query('SELECT * FROM Activity WHERE ID = $1', [ID]);
         res.json(activity.rows[0]);
     }
@@ -37,7 +37,7 @@ class Activity {
     }
 
     async delete(req, res) {
-        const ID = req.params.ID;
+        const ID = req.params.id;
         const activity = await database.query('DELETE FROM Activity WHERE ID = $1;', [ID]);
         res.json(activity.rows[0]);
     }
