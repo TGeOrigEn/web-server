@@ -32,7 +32,7 @@ class Career {
             Place,
         } = req.body;
 
-        const career = await database.query('UPDATE Career SET PersonID = $1, StartDate = $2, EndDate = $3, Post = $4, Place = $5 WHERE ID = $5 RETURNING *'
+        const career = await database.query('UPDATE Career SET PersonID = $1, StartDate = $2, EndDate = $3, Post = $4, Place = $5 WHERE ID = $6 RETURNING *'
             , [PersonID, StartDate, EndDate, Post, Place, ID]);
 
         res.json(career.rows[0]);
