@@ -17,8 +17,7 @@ class Career {
     }
 
     async getAll(req, res) {
-        const ID = req.params.id;
-        const career = await database.query('SELECT * FROM Career WHERE ID = $1', [ID]);
+        const career = await database.query('SELECT * FROM Career');
         res.json(career.rows);
     }
 

@@ -17,8 +17,7 @@ class Rank {
     }
 
     async getAll(req, res) {
-        const ID = req.params.id;
-        const rank = await database.query('SELECT * FROM Rank WHERE ID = $1', [ID]);
+        const rank = await database.query('SELECT * FROM Rank');
         res.json(rank.rows);
     }
 
