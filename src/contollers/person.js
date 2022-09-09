@@ -48,8 +48,8 @@ class Person {
     }
 
     async get(req, res) {
-        const ID = req.params.ID;
-        const person = await database.query('SELECT * FROM Person WHERE ID = $1;', [ID]);
+        const ID = req.params.id;
+        const person = await database.query('SELECT * FROM Person WHERE ID = $1', [ID]);
         res.json(person.rows[0]);
     }
 
@@ -95,8 +95,8 @@ class Person {
     }
 
     async delete(req, res) {
-        const ID = req.params.ID;
-        const person = await database.query('DELETE FROM Person WHERE ID = $1;', [ID]);
+        const ID = req.params.id;
+        const person = await database.query('DELETE FROM Person WHERE ID = $1', [ID]);
         res.json(person.rows[0]);
     }
 }
