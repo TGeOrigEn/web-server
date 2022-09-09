@@ -19,7 +19,7 @@ class Rank {
     async getAll(req, res) {
         const ID = req.params.id;
         const rank = await database.query('SELECT * FROM Rank WHERE PersonID = $1', [ID]);
-        res.json(rank.rows[0]);
+        res.json(rank.rows);
     }
 
     async update(req, res) {
@@ -40,7 +40,7 @@ class Rank {
 
     async delete(req, res) {
         const ID = req.params.id;
-        const rank = await database.query('DELETE FROM Rank WHERE ID = $1', [ID]);
+        const rank = await database.query('DELETE FROM Rank WHERE ID = $1 RETURNING *', [ID]);
         res.json(rank.rows[0]);
     }
 }

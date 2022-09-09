@@ -19,7 +19,7 @@ class Career {
     async getAll(req, res) {
         const ID = req.params.id;
         const career = await database.query('SELECT * FROM Career WHERE PersonID = $1', [ID]);
-        res.json(career.rows[0]);
+        res.json(career.rows);
     }
 
     async update(req, res) {
@@ -40,7 +40,7 @@ class Career {
 
     async delete(req, res) {
         const ID = req.params.id;
-        const career = await database.query('DELETE FROM Career WHERE ID = $1', [ID]);
+        const career = await database.query('DELETE FROM Career WHERE ID = $1 RETURNING *', [ID]);
         res.json(career.rows[0]);
     }
 }

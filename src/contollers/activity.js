@@ -18,7 +18,7 @@ class Activity {
     async getAll(req, res) {
         const ID = req.params.id;
         const activity = await database.query('SELECT * FROM Activity WHERE PersonID = $1', [ID]);
-        res.json(activity.rows[0]);
+        res.json(activity.rows);
     }
 
     async update(req, res) {
