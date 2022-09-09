@@ -6,6 +6,7 @@
   "scripts": {
     "start": "pm2 start server.js",
     "stop": "pm2 stop server",
+    "restart": "pm2 restart server",
     "log": "pm2 log server"
   },
   "author": "",
