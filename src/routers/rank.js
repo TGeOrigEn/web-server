@@ -6,7 +6,7 @@ const router = new Router();
 
 router.post('/rank', rank.create);
 
-router.get('/rank/:id', rank.getAll);
+router.get('/rank', rank.getAll);
 
 router.put('/rank', rank.update);
 

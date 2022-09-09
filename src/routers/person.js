@@ -8,7 +8,7 @@ router.post('/person', person.create);
 
 router.get('/person', person.getAll);
 
-router.get('/person/:id', person.get);
+router.get('/person', person.get);
 
 router.put('/person', person.update);
 
