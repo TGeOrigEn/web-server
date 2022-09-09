@@ -3,41 +3,41 @@ const database = require('../database');
 class Activity {
     async create(req, res) {
         const {
-            PersonID,
-            Name,
-            Description,
-            Place,
+            person_id,
+            name,
+            description,
+            place,
         } = req.body;
 
-        const activity = await database.query('INSERT INTO Activity (PersonID, Name, Description, Place) values ($1, $2, $3, $4) RETURNING *'
-            , [PersonID, Name, Description, Place]);
+        const activity = await database.query('INSERT INTO activity (person_id, name, description, place) values ($1, $2, $3, $4) RETURNING *'
+            , [person_id, name, description, place]);
 
         res.json(activity.rows[0]);
     }
 
     async getAll(req, res) {
-        const activity = await database.query('SELECT * FROM Activity');
+        const activity = await database.query('SELECT * FROM activity');
         res.json(activity.rows);
     }
 
     async update(req, res) {
         const {
-            ID,
-            PersonID,
-            Name,
-            Description,
-            Place,
+            id,
+            person_id,
+            name,
+            description,
+            place,
         } = req.body;
 
-        const activity = await database.query('UPDATE Activity SET PersonID = $1, Name = $2, Description = $3, Place = $4 WHERE ID = $5 RETURNING *'
-            , [PersonID, Name, Description, Place, ID]);
+        const activity = await database.query('UPDATE activity SET person_id = $1, name = $2, description = $3, place = $4 WHERE id = $5 RETURNING *'
+            , [person_id, name, description, place, id]);
 
         res.json(activity.rows[0]);
     }
 
     async delete(req, res) {
-        const ID = req.params.id;
-        const activity = await database.query('DELETE FROM Activity WHERE ID = $1', [ID]);
+        const id = req.params.id;
+        const activity = await database.query('DELETE FROM activity WHERE id = $1', [id]);
         res.json(activity.rows[0]);
     }
 }

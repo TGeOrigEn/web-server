@@ -3,43 +3,43 @@ const database = require('../database');
 class Career {
     async create(req, res) {
         const {
-            PersonID,
-            StartDate,
-            EndDate,
-            Post,
-            Place,
+            person_id,
+            start_date,
+            end_date,
+            post,
+            place,
         } = req.body;
 
-        const career = await database.query('INSERT INTO Career (PersonID, StartDate, EndDate, Post, Place) values ($1, $2, $3, $4, $5) RETURNING *'
-            , [PersonID, StartDate, EndDate, Post, Place]);
+        const career = await database.query('INSERT INTO career (person_id, start_date, end_date, post, place) values ($1, $2, $3, $4, $5) RETURNING *'
+            , [person_id, start_date, end_date, post, place]);
 
         res.json(career.rows[0]);
     }
 
     async getAll(req, res) {
-        const career = await database.query('SELECT * FROM Career');
+        const career = await database.query('SELECT * FROM career');
         res.json(career.rows);
     }
 
     async update(req, res) {
         const {
-            ID,
-            PersonID,
-            StartDate,
-            EndDate,
-            Post,
-            Place,
+            id,
+            person_id,
+            start_date,
+            end_date,
+            post,
+            place,
         } = req.body;
 
-        const career = await database.query('UPDATE Career SET PersonID = $1, StartDate = $2, EndDate = $3, Post = $4, Place = $5 WHERE ID = $6 RETURNING *'
-            , [PersonID, StartDate, EndDate, Post, Place, ID]);
+        const career = await database.query('UPDATE career SET person_id = $1, start_date = $2, end_date = $3, post = $4, place = $5 WHERE id = $6 RETURNING *'
+            , [person_id, start_date, end_date, post, place, id]);
 
         res.json(career.rows[0]);
     }
 
     async delete(req, res) {
-        const ID = req.params.id;
-        const career = await database.query('DELETE FROM Career WHERE ID = $1 RETURNING *', [ID]);
+        const id = req.params.id;
+        const career = await database.query('DELETE FROM career WHERE id = $1 RETURNING *', [id]);
         res.json(career.rows[0]);
     }
 }
